@@ -8,13 +8,13 @@ spring:
       useOnlySiteLocalInterfaces: true
       preferredNetworks:
         - 10.0
-    config:
-      server:
-        git:
-          uri: https://github.com/iesorokin/om-configs.git
-          searchPaths: '{application}'
-        prefix: /config
-      fail-fast: true
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/iesorokin/om-configs.git
+#          searchPaths: '{application}'
+#        prefix: /config
+#      fail-fast: true
 
 brickName: @brick.name@
 
@@ -27,7 +27,7 @@ eureka:
     preferIpAddress: ${REGISTER_WITH_IP:false}
   client:
     registerWithEureka: true
-    fetchRegistry: true
+#    fetchRegistry: true
     serviceUrl:
       defaultZone: ${REPLICASET:http://config-server:10103/eureka/}
 

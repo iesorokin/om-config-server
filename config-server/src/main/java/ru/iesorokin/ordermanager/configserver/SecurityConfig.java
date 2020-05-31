@@ -1,4 +1,4 @@
-package ru.iesorokin.ordermanage.configserver;
+package ru.iesorokin.ordermanager.configserver;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Configuration;

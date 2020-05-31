@@ -1,4 +1,4 @@
-package ru.iesorokin.ordermanage.configserver;
+package ru.iesorokin.ordermanager.configserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
