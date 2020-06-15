@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:10103}
+  port: 8097
 spring:
   application:
     name: config-server
@@ -8,28 +8,26 @@ spring:
       useOnlySiteLocalInterfaces: true
       preferredNetworks:
         - 10.0
-#    config:
-#      server:
-#        git:
-#          uri: https://github.com/iesorokin/om-configs.git
-#          searchPaths: '{application}'
-#        prefix: /config
-#      fail-fast: true
-
-brickName: @brick.name@
+    config:
+      server:
+        git:
+          uri: https://github.com/iesorokin/om-configs.git
+          searchPaths: '{application}'
+        prefix: /config
+      fail-fast: true
 
 eureka:
   server:
     eviction-interval-timer-in-ms: 1000
   instance:
-    hostname: ${HOSTNAME:localhost}
-    instanceId: ${spring.cloud.client.hostname}:${server.port}
+    hostname: localhost
+    instanceId: localhost:8097
     preferIpAddress: ${REGISTER_WITH_IP:false}
   client:
     registerWithEureka: true
 #    fetchRegistry: true
     serviceUrl:
-      defaultZone: ${REPLICASET:http://config-server:10103/eureka/}
+      defaultZone: ${REPLICASET:http://localhost:8097/eureka/}
 
 logging:
   level:
@@ -37,4 +35,4 @@ logging:
     com.netflix.discovery.shared.resolver.aws: WARN
     org.zalando.logbook.Logbook: TRACE
   pattern:
-    console: "${brickName}_${spring.application.name} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%X{transactionId},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}]){blue}[%thread] %clr(%-5level) %clr(%logger{36}){magenta} - %msg%n"
+    console: "${spring.application.name} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%X{transactionId},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}]){blue}[%thread] %clr(%-5level) %clr(%logger{36}){magenta} - %msg%n"
